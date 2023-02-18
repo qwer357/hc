@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hc.test.dao.HcUserDao">
+
+    <resultMap id="BaseResultMap" type="com.hc.test.model.HcUser">
+        <!-- column -> 数据库字段名， property -> 实体名 -->
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="pwd" property="pwd"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, pwd
+    </sql>
+
+    <!-- getList -> dao 层接口方法名 -->
+    <select id="getList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM hc_user
+    </select>
+</mapper>
